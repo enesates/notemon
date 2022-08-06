@@ -20,7 +20,7 @@ describe('FolderController', () => {
 
       expect(
         foldersController.createFolder({ name: folderName }),
-      ).toMatchObject({ name: expect.stringContaining(folderName) });
+      ).toMatchObject({ name: folderName });
     });
   });
 });

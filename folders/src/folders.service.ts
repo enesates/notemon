@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { randomBytes } from 'crypto';
-import { FolderDTO } from './dto/folders.dto';
+import { FolderDTO, FoldersDTO } from './dto/folders.dto';
 
-const folders: [FolderDTO] = {} as [FolderDTO];
+const folders: FoldersDTO = {} as FoldersDTO;
 
 @Injectable()
 export class FoldersService {
-  getFolders(): [FolderDTO] {
+  getFolders(): FoldersDTO {
     return folders;
   }
 
@@ -15,7 +15,7 @@ export class FoldersService {
 
     folders[id] = {
       id: id,
-      name: folderName + '_' + id,
+      name: folderName,
     };
 
     return folders[id];
@@ -25,7 +25,7 @@ export class FoldersService {
     if (!folders[id]) {
       return null;
     }
-    folders[id].name = folderName + '_' + id;
+    folders[id].name = folderName;
 
     return folders[id];
   }

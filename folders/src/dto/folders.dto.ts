@@ -10,3 +10,7 @@ export class FolderDTO {
   id: string;
   name: string;
 }
+
+export class FoldersDTO {
+  id: { FolderDTO }[];
+}

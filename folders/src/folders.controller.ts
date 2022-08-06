@@ -4,19 +4,25 @@ import {
   Delete,
   Get,
   Param,
+  Patch,
   Post,
-  Put,
 } from '@nestjs/common';
 
+import {
+  CreateFolderDTO,
+  UpdateFolderDTO,
+  FoldersDTO,
+  FolderDTO,
+} from './dto/folders.dto';
+
 import { FoldersService } from './folders.service';
-import { CreateFolderDTO, UpdateFolderDTO, FolderDTO } from './dto/folders.dto';
 
 @Controller('folders')
 export class FoldersController {
   constructor(private readonly foldersService: FoldersService) {}
 
   @Get()
-  getFolders(): [FolderDTO] {
+  getFolders(): FoldersDTO {
     return this.foldersService.getFolders();
   }
 
@@ -27,7 +33,7 @@ export class FoldersController {
     return this.foldersService.createFolder(folderName);
   }
 
-  @Put(':id')
+  @Patch(':id')
   updateFolder(@Param() params, @Body() body: UpdateFolderDTO): FolderDTO {
     const id = params.id;
     const folderName = body.name;
