@@ -1,14 +1,14 @@
 export class CreateFolderDTO {
-  name: string;
+  folderName: string;
 }
 
 export class UpdateFolderDTO {
-  name: string;
+  folderName: string;
 }
 
 export class FolderDTO {
   id: string;
-  name: string;
+  folderName: string;
 }
 
 export class FoldersDTO {

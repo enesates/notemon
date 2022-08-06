@@ -15,7 +15,7 @@ export class FoldersService {
 
     folders[id] = {
       id: id,
-      name: folderName,
+      folderName: folderName,
     };
 
     return folders[id];
@@ -25,7 +25,7 @@ export class FoldersService {
     if (!folders[id]) {
       return null;
     }
-    folders[id].name = folderName;
+    folders[id].folderName = folderName;
 
     return folders[id];
   }

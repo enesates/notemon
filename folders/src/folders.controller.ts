@@ -28,7 +28,7 @@ export class FoldersController {
 
   @Post()
   createFolder(@Body() body: CreateFolderDTO): FolderDTO {
-    const folderName = body.name;
+    const folderName = body.folderName;
 
     return this.foldersService.createFolder(folderName);
   }
@@ -36,7 +36,7 @@ export class FoldersController {
   @Patch(':id')
   updateFolder(@Param() params, @Body() body: UpdateFolderDTO): FolderDTO {
     const id = params.id;
-    const folderName = body.name;
+    const folderName = body.folderName;
 
     return this.foldersService.updateFolder(id, folderName);
   }
