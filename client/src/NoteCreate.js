@@ -1,28 +1,28 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-function FolderCreate() {
-    const [folderName, setFolderName] = useState('');
+function NoteCreate({ folderId }) {
+    const [noteContent, setNoteContent] = useState('');
 
     const onSubmit = async (event) => {
         event.preventDefault();
-        
-        await axios.post(process.env.REACT_APP_FOLDERS_SERVICE_API_URL, {
-            folderName: folderName
+
+        await axios.post(process.env.REACT_APP_NOTES_SERVICE_API_URL.replace('folderId', folderId), {
+            content: noteContent
         });
 
-        setFolderName('');
+        setNoteContent('');
     };
 
     return (
       <div>
         <form onSubmit={onSubmit}>
             <div className="form-group">
-                <label>Folder Name</label>
+                <label>Note</label>
                 <input 
                     className="form-control"
-                    value={folderName}
-                    onChange={e => setFolderName(e.target.value)}
+                    value={noteContent}
+                    onChange={e => setNoteContent(e.target.value)}
                 />
             </div>
             <button className="btn btn-primary">Submit</button>
@@ -31,4 +31,4 @@ function FolderCreate() {
     );
 }
   
-export default FolderCreate;
+export default NoteCreate;

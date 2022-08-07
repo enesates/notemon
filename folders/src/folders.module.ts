@@ -4,7 +4,7 @@ import { FoldersController } from './folders.controller';
 import { FoldersService } from './folders.service';
 
 @Module({
-  imports: [ConfigModule.forRoot()],
+  imports: [ConfigModule.forRoot({ isGlobal: true })],
   controllers: [FoldersController],
   providers: [FoldersService],
 })

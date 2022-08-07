@@ -4,7 +4,7 @@ import { NotesController } from './notes.controller';
 import { NotesService } from './notes.service';
 
 @Module({
-  imports: [ConfigModule.forRoot()],
+  imports: [ConfigModule.forRoot({ isGlobal: true })],
   controllers: [NotesController],
   providers: [NotesService],
 })
