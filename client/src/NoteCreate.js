@@ -7,7 +7,7 @@ function NoteCreate({ folderId }) {
     const onSubmit = async (event) => {
         event.preventDefault();
 
-        await axios.post(process.env.REACT_APP_NOTES_SERVICE_API_URL.replace('folderId', folderId), {
+        await axios.post(process.env.REACT_APP_NOTES_SERVICE_API_URL + '/folders/' + folderId + '/notes', {
             content: noteContent
         });
 

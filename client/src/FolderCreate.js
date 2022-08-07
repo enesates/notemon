@@ -7,7 +7,7 @@ function FolderCreate() {
     const onSubmit = async (event) => {
         event.preventDefault();
         
-        await axios.post(process.env.REACT_APP_FOLDERS_SERVICE_API_URL, {
+        await axios.post(process.env.REACT_APP_FOLDERS_SERVICE_API_URL + '/folders', {
             folderName: folderName
         });
 

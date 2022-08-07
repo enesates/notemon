@@ -27,14 +27,17 @@ export class FoldersController {
   }
 
   @Post()
-  createFolder(@Body() body: CreateFolderDTO): FolderDTO {
+  createFolder(@Body() body: CreateFolderDTO): Promise<FolderDTO> {
     const folderName = body.folderName;
 
     return this.foldersService.createFolder(folderName);
   }
 
   @Patch(':id')
-  updateFolder(@Param() params, @Body() body: UpdateFolderDTO): FolderDTO {
+  updateFolder(
+    @Param() params,
+    @Body() body: UpdateFolderDTO,
+  ): Promise<FolderDTO> {
     const id = params.id;
     const folderName = body.folderName;
 
@@ -42,7 +45,7 @@ export class FoldersController {
   }
 
   @Delete(':id')
-  deleteFolder(@Param() params): string {
+  deleteFolder(@Param() params): Promise<string> {
     const id = params.id;
 
     return this.foldersService.deleteFolder(id);

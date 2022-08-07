@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { HttpService } from '@nestjs/axios';
 import { randomBytes } from 'crypto';
 import { FolderDTO, FoldersDTO } from './dto/folders.dto';
 
@@ -6,11 +7,13 @@ const folders: FoldersDTO = {} as FoldersDTO;
 
 @Injectable()
 export class FoldersService {
+  constructor(private readonly httpService: HttpService) {}
+
   getFolders(): FoldersDTO {
     return folders;
   }
 
-  createFolder(folderName: string): FolderDTO {
+  async createFolder(folderName: string): Promise<FolderDTO> {
     const id = randomBytes(4).toString('hex');
 
     folders[id] = {
@@ -18,21 +21,38 @@ export class FoldersService {
       folderName: folderName,
     };
 
+    this.emitEvent('FolderCreated', folders[id]);
+
     return folders[id];
   }
 
-  updateFolder(id: string, folderName: string): FolderDTO {
+  async updateFolder(id: string, folderName: string): Promise<FolderDTO> {
     if (!folders[id]) {
       return null;
     }
     folders[id].folderName = folderName;
 
+    this.emitEvent('FolderUpdated', folders[id]);
+
     return folders[id];
   }
 
-  deleteFolder(id: string): string {
+  async deleteFolder(id: string): Promise<string> {
     delete folders[id];
 
+    this.emitEvent('FolderDeleted', id);
+
     return id;
+  }
+
+  async emitEvent(type, data) {
+    await this.httpService.axiosRef
+      .post(process.env.EVENTBUS_SERVICE_API_URL + '/events', {
+        type: type,
+        data: data,
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 }

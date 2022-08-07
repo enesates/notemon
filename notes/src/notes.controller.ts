@@ -29,7 +29,7 @@ export class NotesController {
   }
 
   @Post()
-  createNote(@Param() params, @Body() body: CreateNoteDTO): NoteDTO {
+  createNote(@Param() params, @Body() body: CreateNoteDTO): Promise<NoteDTO> {
     const folderId = params.folderId;
     const note = body.content;
 
@@ -37,7 +37,7 @@ export class NotesController {
   }
 
   @Patch(':id')
-  updateNote(@Param() params, @Body() body: UpdateNoteDTO): NoteDTO {
+  updateNote(@Param() params, @Body() body: UpdateNoteDTO): Promise<NoteDTO> {
     const folderId = params.folderId;
     const id = params.id;
     const note = body.content;
@@ -46,7 +46,7 @@ export class NotesController {
   }
 
   @Delete(':id')
-  deleteNote(@Param() params): string {
+  deleteNote(@Param() params): Promise<string> {
     const folderId = params.folderId;
     const id = params.id;
 

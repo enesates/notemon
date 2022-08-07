@@ -7,7 +7,7 @@ function FolderList() {
     const [folders, setFolders] = useState({});
 
     const fetchFolders = async () => {
-        const res = await axios.get(process.env.REACT_APP_FOLDERS_SERVICE_API_URL);
+        const res = await axios.get(process.env.REACT_APP_FOLDERS_SERVICE_API_URL + '/folders');
 
         setFolders(res.data);
     }

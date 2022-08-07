@@ -5,7 +5,7 @@ function NoteList({ folderId }) {
     const [notes, setNotes] = useState({});
 
     const fetchNotes = async () => {
-        const res = await axios.get(process.env.REACT_APP_NOTES_SERVICE_API_URL.replace('folderId', folderId));
+        const res = await axios.get(process.env.REACT_APP_NOTES_SERVICE_API_URL + '/folders/' + folderId + '/notes');
 
         setNotes(res.data);
     }

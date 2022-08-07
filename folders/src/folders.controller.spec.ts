@@ -19,7 +19,7 @@ describe('FolderController', () => {
       const folderName = 'TEST_FOLDER_NAME';
 
       expect(
-        foldersController.createFolder({ name: folderName }),
+        foldersController.createFolder({ folderName: folderName }),
       ).toMatchObject({ name: folderName });
     });
   });
