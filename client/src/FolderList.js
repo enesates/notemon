@@ -7,7 +7,7 @@ function FolderList() {
     const [folders, setFolders] = useState({});
 
     const fetchFolders = async () => {
-        const res = await axios.get(process.env.REACT_APP_FOLDERS_SERVICE_API_URL + '/folders');
+        const res = await axios.get(process.env.REACT_APP_QUERY_SERVICE_API_URL + '/notebook');
 
         setFolders(res.data);
     }
@@ -25,7 +25,7 @@ function FolderList() {
             >
                 <div className='card-body'>
                     <h3>{folder.folderName}</h3>
-                    <NoteList folderId={folder.id} />
+                    <NoteList notes={folder.notes} />
                     <NoteCreate folderId={folder.id} />
                 </div>
             </div>

@@ -6,6 +6,8 @@ export class EventBusService {
   constructor(private readonly httpService: HttpService) {}
 
   async emitEvents(event: object) {
+    console.log(event);
+
     await this.httpService.axiosRef
       .post(process.env.FOLDERS_SERVICE_API_URL + '/events', event)
       .catch((error) => {
@@ -14,6 +16,12 @@ export class EventBusService {
 
     await this.httpService.axiosRef
       .post(process.env.NOTES_SERVICE_API_URL + '/events', event)
+      .catch((error) => {
+        console.log(error);
+      });
+
+    await this.httpService.axiosRef
+      .post(process.env.QUERY_SERVICE_API_URL + '/events', event)
       .catch((error) => {
         console.log(error);
       });

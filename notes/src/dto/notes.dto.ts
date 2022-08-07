@@ -7,18 +7,15 @@ export class UpdateNoteDTO {
 }
 
 export class NoteDTO {
-  id: string;
-  content: string;
+  id: string | undefined;
+  content: string | undefined;
+  folderId: string | undefined;
 }
 
 export class NotesDTO {
-  id: { NoteDTO }[];
+  [noteId: string]: NoteDTO;
 }
 
 export class NotesByFolderDTO {
-  folderId: {
-    id: {
-      NoteDTO;
-    }[];
-  }[];
+  [folderId: string]: NotesDTO;
 }

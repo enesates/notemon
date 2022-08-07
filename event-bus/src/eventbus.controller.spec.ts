@@ -15,8 +15,8 @@ describe('EventBusController', () => {
   });
 
   describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(eventBusController.getHello()).toBe('Hello World!');
+    it('should return undefined', () => {
+      expect(eventBusController.emitEvents({})).toBe(undefined);
     });
   });
 });

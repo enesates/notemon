@@ -21,6 +21,7 @@ export class NotesService {
     notesByFolder[id] = {
       id: id,
       content: content,
+      folderId: folderId,
     };
 
     notes[folderId] = notesByFolder;

@@ -7,10 +7,10 @@ export class UpdateFolderDTO {
 }
 
 export class FolderDTO {
-  id: string;
-  folderName: string;
+  id: string | undefined;
+  folderName: string | undefined;
 }
 
 export class FoldersDTO {
-  id: { FolderDTO }[];
+  [folderId: string]: FolderDTO;
 }
