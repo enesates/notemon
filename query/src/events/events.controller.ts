@@ -6,7 +6,7 @@ export class EventsController {
   constructor(private readonly eventsService: EventsService) {}
 
   @Post()
-  handleEvent(@Body() body) {
-    return this.eventsService.handleEvent(body);
+  async handleEvent(@Body() body) {
+    return await this.eventsService.handleEvent(body);
   }
 }

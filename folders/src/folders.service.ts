@@ -27,10 +27,10 @@ export class FoldersService {
   }
 
   async updateFolder(id: string, folderName: string): Promise<FolderDTO> {
-    if (!folders[id]) {
-      return null;
-    }
-    folders[id].folderName = folderName;
+    folders[id] = {
+      id: id,
+      folderName: folderName,
+    };
 
     this.emitEvent('FolderUpdated', folders[id]);
 
@@ -40,7 +40,7 @@ export class FoldersService {
   async deleteFolder(id: string): Promise<string> {
     delete folders[id];
 
-    this.emitEvent('FolderDeleted', id);
+    this.emitEvent('FolderDeleted', { id });
 
     return id;
   }

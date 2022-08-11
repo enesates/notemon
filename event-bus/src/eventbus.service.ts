@@ -11,19 +11,19 @@ export class EventBusService {
     await this.httpService.axiosRef
       .post(process.env.FOLDERS_SERVICE_API_URL + '/events', event)
       .catch((error) => {
-        console.log(error);
+        console.log(error.message);
       });
 
     await this.httpService.axiosRef
       .post(process.env.NOTES_SERVICE_API_URL + '/events', event)
       .catch((error) => {
-        console.log(error);
+        console.log(error.message);
       });
 
     await this.httpService.axiosRef
       .post(process.env.QUERY_SERVICE_API_URL + '/events', event)
       .catch((error) => {
-        console.log(error);
+        console.log(error.message);
       });
   }
 }

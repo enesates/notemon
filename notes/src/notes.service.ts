@@ -51,7 +51,7 @@ export class NotesService {
       delete notes[folderId][id];
     }
 
-    this.emitEvent('NoteDeleted', id);
+    this.emitEvent('NoteDeleted', { folderId, id });
 
     return id;
   }
