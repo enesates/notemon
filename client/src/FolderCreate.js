@@ -25,7 +25,7 @@ function FolderCreate() {
                     onChange={e => setFolderName(e.target.value)}
                 />
             </div>
-            <button className="btn btn-primary">Submit</button>
+            <button className="btn btn-primary">Create</button>
         </form>
       </div>
     );

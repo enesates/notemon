@@ -1,7 +1,3 @@
 # notemon
 Simple note app
-
-TODO:
-- handling missing events when a service is down
-- kafka
-- test
+(Test repository to learn the structure of a project build with NestJS, TypeScript, React, MongoDB, and microservices architecture.)

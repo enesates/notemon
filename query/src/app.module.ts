@@ -11,7 +11,7 @@ import { EventsModule } from './events/events.module';
     HttpModule,
     QueryModule,
     EventsModule,
-    MongooseModule.forRoot('mongodb://localhost:27017/nest'),
+    MongooseModule.forRoot('mongodb://localhost:27017/querydb'),
   ],
 })
 export class AppModule {}

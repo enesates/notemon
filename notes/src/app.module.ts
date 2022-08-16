@@ -1,14 +1,17 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { HttpModule } from '@nestjs/axios';
-import { NotesController } from './notes.controller';
-import { NotesService } from './notes.service';
-import { EventsController } from './events.controller';
-import { EventsService } from './events.service';
+import { MongooseModule } from '@nestjs/mongoose';
+import { NotesModule } from './notes/notes.module';
+import { EventsModule } from './events/events.module';
 
 @Module({
-  imports: [ConfigModule.forRoot({ isGlobal: true }), HttpModule],
-  controllers: [NotesController, EventsController],
-  providers: [NotesService, EventsService],
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+    HttpModule,
+    NotesModule,
+    EventsModule,
+    MongooseModule.forRoot('mongodb://localhost:27017/notesdb'),
+  ],
 })
 export class AppModule {}

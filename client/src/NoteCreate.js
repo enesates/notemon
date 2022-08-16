@@ -18,14 +18,14 @@ function NoteCreate({ folderId }) {
       <div>
         <form onSubmit={onSubmit}>
             <div className="form-group">
-                <label>Note</label>
+                <label>New Note</label>
                 <input 
                     className="form-control"
                     value={noteContent}
                     onChange={e => setNoteContent(e.target.value)}
                 />
             </div>
-            <button className="btn btn-primary">Submit</button>
+            <button className="btn btn-primary">Create</button>
         </form>
       </div>
     );

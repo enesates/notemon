@@ -1,14 +1,17 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { HttpModule } from '@nestjs/axios';
-import { FoldersController } from './folders.controller';
-import { FoldersService } from './folders.service';
-import { EventsController } from './events.controller';
-import { EventsService } from './events.service';
+import { MongooseModule } from '@nestjs/mongoose';
+import { FoldersModule } from './folders/folders.module';
+import { EventsModule } from './events/events.module';
 
 @Module({
-  imports: [ConfigModule.forRoot({ isGlobal: true }), HttpModule],
-  controllers: [FoldersController, EventsController],
-  providers: [FoldersService, EventsService],
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+    HttpModule,
+    FoldersModule,
+    EventsModule,
+    MongooseModule.forRoot('mongodb://localhost:27017/foldersdb'),
+  ],
 })
 export class AppModule {}
